@@ -1,5 +1,7 @@
 import linenumber
 import unittest
+import logging
+import sys
 
 class IsNoneOrWhitespaceTests(unittest.TestCase):
     def test_returns_true_when_arg_is_none(self):
@@ -98,4 +100,5 @@ class PrependLineNumber(unittest.TestCase):
         self.assertNotEqual(string, string_returned)
 
 if __name__ == '__main__':
+    logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
     unittest.main()
