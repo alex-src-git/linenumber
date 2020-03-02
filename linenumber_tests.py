@@ -64,5 +64,38 @@ class IsMoreIndentedTests(unittest.TestCase):
         with self.assertRaises(TypeError):
             linenumber.is_more_indented("", None) 
 
+class PrependLineNumber(unittest.TestCase):
+    def test_raises_assertion_error_when_line_arg_is_none(self):
+        with self.assertRaises(AssertionError):
+            linenumber.prepend_line_number(0, None)
+
+    def test_raises_assertion_error_when_line_arg_is_empty_string(self):
+        with self.assertRaises(AssertionError):
+            linenumber.prepend_line_number(0, "")
+
+    def test_raises_assertion_error_when_line_arg_is_whitespace(self):
+        with self.assertRaises(AssertionError):
+            linenumber.prepend_line_number(0, "    ")
+
+    def test_returns_string_longer_than_line_arg(self):
+        string = "Hello World"
+        string_returned = linenumber.prepend_line_number(0, string)
+        self.assertGreater(len(string_returned), len(string))
+
+    def test_returns_string_that_contains_line_arg(self):
+        string = "Hello World"
+        string_returned = linenumber.prepend_line_number(0, string)
+        self.assertIn(string, string_returned)
+
+    def test_returns_string_that_contains_number_arg(self):
+        string = "Hello World"
+        string_returned = linenumber.prepend_line_number(42, string)
+        self.assertIn("42", string_returned)
+
+    def test_returns_string_that_is_not_equal_to_line_arg(self):
+        string = "Hello World"
+        string_returned = linenumber.prepend_line_number(0, string)
+        self.assertNotEqual(string, string_returned)
+
 if __name__ == '__main__':
     unittest.main()

@@ -12,3 +12,7 @@ def is_more_indented(string, string_prior):
 
 def is_less_indented(string, string_prior):
     return deduce_indentation(string) < deduce_indentation(string_prior)
+
+def prepend_line_number(number, line):
+    assert not is_none_or_whitespace(line)
+    return f"{number}: {line}"
