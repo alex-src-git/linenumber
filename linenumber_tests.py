@@ -30,7 +30,7 @@ class DeduceIndentationTests(unittest.TestCase):
 
 class IsLessIndentedTests(unittest.TestCase):
     def test_returns_false_when_strings_have_equal_indentation(self):
-        self.assertTrue(linenumber.is_less_indented("  a", "  b"))
+        self.assertFalse(linenumber.is_less_indented("  a", "  b"))
 
     def test_returns_false_when_string_prior_is_less_indented(self):
         self.assertFalse(linenumber.is_less_indented("   a,", " b"))
