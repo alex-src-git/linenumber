@@ -108,7 +108,7 @@ class NumericPrefixTests(unittest.TestCase):
     def test_constructor_without_numbers_argument_assigns_new_list(self):
         prefix = linenumber.NumericPrefix()
         self.assertIsNotNone(prefix.numbers)
-        self.assertEquals(1, len(prefix.numbers))
+        self.assertEqual(1, len(prefix.numbers))
 
     def test_str_returns_string(self):
         prefix = linenumber.NumericPrefix()
