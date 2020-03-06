@@ -99,6 +99,61 @@ class PrependLineNumber(unittest.TestCase):
         string_returned = linenumber.prepend_line_number(0, string)
         self.assertNotEqual(string, string_returned)
 
+class NumericPrefixTests(unittest.TestCase):
+    def test_constructor_assigns_numbers(self):
+        numbers = [ 1, 4, 5, 3  ]
+        prefix = linenumber.NumericPrefix(numbers)
+        self.assertEqual(numbers, prefix.numbers)
+
+    def test_constructor_without_numbers_argument_assigns_new_list(self):
+        prefix = linenumber.NumericPrefix()
+        self.assertIsNotNone(prefix.numbers)
+        self.assertEquals(1, len(prefix.numbers))
+
+    def test_str_returns_string(self):
+        prefix = linenumber.NumericPrefix()
+        string = str(prefix)
+        self.assertIsNotNone(string)
+
+    def test_str_returns_string_that_is_not_empty_or_whitespace(self):
+        prefix = linenumber.NumericPrefix()
+        string = str(prefix)
+        self.assertTrue(string)
+        self.assertFalse(string.isspace())
+
+    def test_str_returns_string_greater_equal_number_list(self):
+        numbers = [ 1, 3, 4000, 5, 100 ]
+        numbers_len = len("".join(map(str, numbers)))
+        prefix = linenumber.NumericPrefix(numbers)
+        string = str(prefix)
+        self.assertGreaterEqual(len(string), numbers_len)
+
+    def test_increment_increments_last_number(self):
+        prefix = linenumber.NumericPrefix()
+        prefix.increment()
+        self.assertEqual(2, prefix.numbers[-1])
+        
+    def test_increment_increments_last_number_only(self):
+        prefix = linenumber.NumericPrefix([1534, 435, 32])
+        prefix.increment()
+        self.assertEqual(33 , prefix.numbers[2])
+        self.assertEqual(435, prefix.numbers[1])
+        self.assertEqual(1534, prefix.numbers[0])
+        
+    def test_indent_increases_list_len_by_1(self):
+        prefix = linenumber.NumericPrefix()
+        prefix.indent()
+        self.assertEqual(2, len(prefix.numbers))
+
+    def test_unident_reduces_list_len_by_1(self):
+        numbers = [1]
+        prefix = linenumber.NumericPrefix(numbers)
+        prefix.indent()
+        prefix.indent()
+        prefix.indent()
+        prefix.unindent()
+        self.assertEqual(3, len(prefix.numbers))
+
 if __name__ == '__main__':
     logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
     unittest.main()

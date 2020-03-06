@@ -16,3 +16,23 @@ def is_less_indented(string, string_prior):
 def prepend_line_number(number, line):
     assert not is_none_or_whitespace(line)
     return f"{number}: {line}"
+
+class NumericPrefix():
+    def __init__(self, numbers = None):
+        if numbers is None:
+            self.numbers = [ 1 ]
+        else:
+            self.numbers = numbers
+
+    def __str__(self):
+        return ".".join(map(str, self.numbers))
+
+    def increment(self):
+        self.numbers[-1] += 1
+
+    def indent(self):
+        self.numbers.append(1)
+
+    def unindent(self):
+        self.numbers.pop()
+        self.increment()
