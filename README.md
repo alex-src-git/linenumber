@@ -1,3 +1,12 @@
+## What is this?
+A Python script for prepending line numbers to text - written as a Python leaning exercise.
+
+## Tests
+Tests reside in `linenumber_tests.py`; they use [unittest](https://docs.python.org/3/library/unittest.html).
+### How to run tests from the command line
+1. `cd` to the root `linenumber` directory.
+2. `python linenumber_tests.py`.
+
 ## Example Usage
 Input some indented string that lacks line numbers.
 <pre>
