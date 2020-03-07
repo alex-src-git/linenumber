@@ -21,7 +21,7 @@ For each file name in file name collection
 3. For each file in directory
     3.1. Read file name
     3.2. If file name ends with "*.py"
-        3.2.1. Add file to collection
+        3.2.1. Add file name to collection
         3.2.2. Log file name
 4. For each file name in file name collection
     4.1. Log file name
