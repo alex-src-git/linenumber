@@ -46,7 +46,7 @@ def pairwise(iterable):
     return zip(prior, current)
 
 
-class NumericPrefix():
+class NumericPrefix:
     def __init__(self, numbers=None):
         if numbers is None:
             self.numbers = [1]
