@@ -1,5 +1,3 @@
-# LINENUMBER
-## Example Usage:
 ### Input
 <pre>
 Get starting directory from user  
