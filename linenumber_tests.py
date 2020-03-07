@@ -71,6 +71,17 @@ class IsMoreIndentedTests(unittest.TestCase):
             linenumber.is_more_indented("", None)
 
 
+class PairWiseTests(unittest.TestCase):
+    def test_returns_elements_n_and_n_minus_1_in_loop(self):
+        elements = range(100)
+        i = 0
+        for (prior, current) in linenumber.pairwise(elements):
+            i += 1
+            self.assertNotEqual(current, prior)
+            self.assertEqual(elements[i], current)
+            self.assertEqual(elements[i - 1], prior)
+            
+
 class PrependLineNumber(unittest.TestCase):
     def test_raises_assertion_error_when_line_arg_is_none(self):
         with self.assertRaises(AssertionError):

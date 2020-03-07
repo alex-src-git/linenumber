@@ -1,3 +1,5 @@
+from itertools import tee
+
 def is_none_or_whitespace(string):
     return not string or string.isspace()
 
@@ -20,6 +22,12 @@ def is_less_indented(string, string_prior):
 def prepend_line_number(number, line):
     assert not is_none_or_whitespace(line)
     return f"{number}: {line}"
+
+
+def pairwise(iterable):
+    prior, current = tee(iterable)
+    next(current, None)
+    return zip(prior, current)
 
 
 class NumericPrefix():
