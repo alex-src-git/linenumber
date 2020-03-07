@@ -80,9 +80,9 @@ class PairWiseTests(unittest.TestCase):
             self.assertNotEqual(current, prior)
             self.assertEqual(elements[i], current)
             self.assertEqual(elements[i - 1], prior)
-            
 
-class PrependLineNumber(unittest.TestCase):
+
+class PrependLineNumberTests(unittest.TestCase):
     def test_raises_assertion_error_when_line_arg_is_none(self):
         with self.assertRaises(AssertionError):
             linenumber.prepend_line_number(0, None)
