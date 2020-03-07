@@ -83,18 +83,6 @@ class PairWiseTests(unittest.TestCase):
 
 
 class PrependLineNumberTests(unittest.TestCase):
-    def test_raises_assertion_error_when_line_arg_is_none(self):
-        with self.assertRaises(AssertionError):
-            linenumber.prepend_line_number(0, None)
-
-    def test_raises_assertion_error_when_line_arg_is_empty_string(self):
-        with self.assertRaises(AssertionError):
-            linenumber.prepend_line_number(0, "")
-
-    def test_raises_assertion_error_when_line_arg_is_whitespace(self):
-        with self.assertRaises(AssertionError):
-            linenumber.prepend_line_number(0, "    ")
-
     def test_returns_string_longer_than_line_arg(self):
         string = "Hello World"
         string_returned = linenumber.prepend_line_number(0, string)
