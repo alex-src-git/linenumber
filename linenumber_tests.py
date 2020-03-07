@@ -116,6 +116,33 @@ class PrependLineNumberTests(unittest.TestCase):
         self.assertNotEqual(string, string_returned)
 
 
+class PrependLineNumbersTests(unittest.TestCase):
+    def test_returns_string_longer_than_input_arg(self):
+        def count_chars(string_list):
+            return len("".join(string_list))
+        lines = ["Hello", "World", "Or", "Something", "Idk"]
+        lines_returned = list(linenumber.prepend_line_numbers(lines))
+        self.assertGreaterEqual(count_chars(lines_returned), count_chars(lines))
+
+    def test_returns_same_number_of_lines_as_inputted(self):
+        lines = ["What", "Are", "Those", "?!!"]
+        lines_returned = list(linenumber.prepend_line_numbers(lines))
+        self.assertEqual(len(lines), len(lines_returned))
+
+    def test_returns_lines_that_contain_input(self):
+        lines = ["Hello", "Is", "This", "Thing", "On", "???"]
+        lines_returned = list(linenumber.prepend_line_numbers(lines))
+        lines_returned_joined = "".join(lines)
+        for line_inputted in lines:
+            self.assertIn(line_inputted, lines_returned_joined)
+
+    def test_returns_lines_in_same_order_as_input(self):
+        lines = ["Hey", "That's", "Pretty", "Good"]
+        lines_returned = list(linenumber.prepend_line_numbers(lines))
+        for i, line_inputted in enumerate(lines):
+            self.assertIn(line_inputted, lines_returned[i])
+
+
 class NumericPrefixTests(unittest.TestCase):
     def test_constructor_assigns_numbers(self):
         numbers = [1, 4, 5, 3]

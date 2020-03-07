@@ -25,6 +25,21 @@ def prepend_line_number(number, line):
     return f"{number}: {line}"
 
 
+def prepend_line_numbers(lines):
+    prefix = NumericPrefix()
+    yield prepend_line_number(prefix, lines[0])
+
+    for (line_prior, line) in pairwise(lines):
+        if is_more_indented(line, line_prior):
+            prefix.indent()
+        elif is_less_indented(line, line_prior):
+            prefix.un_indent()
+        else:
+            prefix.increment()
+
+        yield prepend_line_number(prefix, line)
+
+
 def pairwise(iterable):
     prior, current = tee(iterable)
     next(current, None)
