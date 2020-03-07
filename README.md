@@ -1,5 +1,5 @@
-#### Example Usage
-##### Input
+## Example Usage
+Input some indented string that lacks line numbers.
 <pre>
 Get starting directory from user  
 If directory does not exist:  
@@ -12,7 +12,7 @@ For each file in directory
 For each file name in file name collection  
     Log file name  
 </pre>
-##### Output
+Outputted string now has line numbers :open_mouth:
 <pre>
 1. Get starting directory from user
 2. If directory does not exist:
