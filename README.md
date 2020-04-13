@@ -1,5 +1,5 @@
 ## What is this?
-A Python script for prepending line numbers to text - written as a Python leaning exercise.
+A Python script for prepending line numbers to text - written as a Python learning exercise.
 
 ## Tests
 Tests reside in `linenumber_tests.py`; they use [unittest](https://docs.python.org/3/library/unittest.html).
